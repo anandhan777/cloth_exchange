@@ -1,0 +1,74 @@
+import React from 'react'
+import logo1 from '../../../assets/Home_image/logo1.png'
+import { NavLink,useNavigate } from 'react-router-dom'
+import {useForm} from "react-hook-form"
+import axios from 'axios'
+import google from "../../../assets/Home_image/google.png"
+import{motion} from "framer-motion"
+import Alert from '../../common/Alert'
+import {useState} from "react"
+
+
+function Login() {
+  const { register, handleSubmit,formState:{errors} } = useForm();
+  const navigate = useNavigate();
+  const[error,setError]=useState("");
+  const[showalert,setShowalert]=useState(false);
+
+
+  const onSubmit=async(data)=>{
+      console.log(data);
+      try{
+      const res=await axios.post("http://localhost:5000/api/auth/login",data);
+      console.log(res.data);
+      localStorage.setItem("token",res.data.token);
+      localStorage.setItem("user",JSON.stringify(res.data.user));   
+       if(res.data.role==="admin"){
+        navigate("/admin");
+       }else{
+        navigate("/user");
+       }
+      }catch(error){
+        alert("invalid credentials"); 
+        console.log(error.response?.error.response.data);
+       
+      }  
+      
+  }
+
+  return (
+    <div className="bg-[#FDF6EC] h-[740px] flex flex-col">
+        <div className="flex items-center -mt-6 -pt-2" >
+            <img src={logo1} alt="logo" className='w-50 h-38'/>
+      
+      <div className="">
+        <NavLink to="/" className=" ml-[750px] px-3 py-2 hover:bg-green-600 hover:text-white duration-300 rounded-full font-semibold">Home</NavLink>
+        <NavLink to="/user" className="px-3 py-2  hover:bg-green-600 hover:text-white duration-300 rounded-full font-semibold">About</NavLink>
+        <NavLink to="/admin" className="px-3 py-2 hover:bg-green-600 hover:text-white duration-300 rounded-full font-semibold">Contact</NavLink>
+        <NavLink to="/mentors" className="px-3 py-2 hover:bg-green-600 hover:text-white duration-300 rounded-full font-semibold">feature</NavLink>
+       <NavLink to="/login"> <button  className="bg-white shadow-[0_0_10px_rgba(59,130,246,0.7)] hover:bg-green-900 hover:text-white text-green-900 duration-400 w-[100px] py-2 px-4 rounded-3xl hover:text-blue-900 ml-4" style={{border:"1px solid #00c3ff",boxshadow:"0 4px 12px rgba(0, 0, 255, 0.6)"}}>Login</button> </NavLink>
+        <NavLink to="/register"> <button  className="bg-green-900 shadow-[0_0_10px_rgba(59,130,246,0.7)] hover:bg-white hover:text-green-900 text-white w-[100px] py-2 px-4 rounded-3xl" style={{border:"1px solid #00c3ff"}}>Sign Up</button> </NavLink>
+      </div>
+    </div>
+    <motion.div initial={{opacity:0,scale:0.4}} animate={{opacity:1,scale:1}} transition={{duration:0.4}} className="border-2 border-green-900 rounded-2xl w-[450px] h-[450px] ml-[550px] mt-10 flex flex-col  items-center bg-white shadow-2xl">
+        <h1 className='font-bold text-3xl pt-8 pb-4'>login</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center'>
+        <input type="text" placeholder="enter you name" {...register("name",{required:"Name is required"})} className="pl-4 border-2 border-gray-500 w-[400px] h-12 rounded-full mt-4"/>
+        {errors.name && <p className="text-green-700">{errors.name.message}</p>}
+        <input type="password" placeholder="enter your password" {...register("password",{required:"Password is required"})} className="pl-4 border-2 border-gray-500 w-[400px] h-12 rounded-full mt-6"/>
+        {errors.password && <p className="text-green-700">{errors.password.message}</p>}
+         <p className="text-[16px] text-gray-600 text-right pl-50 ">forgot password</p>
+         {errors.root && <p className="text-red-600 bg-red-100 rounded-xl px-2 duration-300">{errors.root.message}</p>}
+        <button className="bg-gradient-to-r from-green-900 to-green-700 mt-4 text-white w-[200px] py-2 px-4 rounded-3xl hover:bg-green-700">login</button>
+        {error && showalert && <Alert type="error" message={error} onClose={()=>setShowalert(false)}/>}
+        </form>
+        <p className="text-[16px] text-gray-600 ml-1">if you don't have an account, <NavLink to="/register" className="text-blue-500 hover:underline">register here</NavLink></p>
+        <p>or</p>
+        <button onClick={()=>{window.location.href="http://localhost:5000/api/auth/google"}}
+          className="bg-white flex items-center mt-4 border-2 border-green-900 text-green-900 w-[200px] py- px-1 rounded-3xl hover:bg-gray-200"><img src={google} className="w-10 h-10"/>login with google</button>
+    </motion.div>
+    </div>
+  )
+}
+
+export default Login

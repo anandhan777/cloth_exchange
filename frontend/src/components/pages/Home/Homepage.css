@@ -1,0 +1,8 @@
+.homeheader{
+    left:0;
+    height:0;
+    position:relative;
+    width:50%;
+    height:100%;
+    background: linear-gradient(to right,#449342,transparent,transparent);
+}

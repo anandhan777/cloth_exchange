@@ -1,0 +1,13 @@
+/* .container{
+    animation: moveLeft 15s linear infinite;
+    
+}
+
+@keyframes moveLeft{
+    0%{
+        transform:translateX(-100%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
+} */

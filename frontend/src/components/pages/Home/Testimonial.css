@@ -1,0 +1,13 @@
+.container{
+    animation: moveLeft 15s linear infinite;
+    gap:455px;
+}
+
+@keyframes moveLeft{
+    0%{
+        transform:translateX(-70%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
+}
