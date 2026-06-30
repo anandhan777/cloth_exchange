@@ -5,7 +5,7 @@ const onlineUsers={};
 
 const socketSetup=(server)=>{
     const io=new Server(server,{
-        cors:{origin:"http://localhost:5173",
+        cors:{origin:"https://cloth-exchange-frontend.vercel.app",
             methods:["GET","POST"],
             credentials:true,
         }
