@@ -16,11 +16,11 @@ const[request,setRequest]=useState([]);
     const fetchProfile=async()=>{
         try{
       
-      const[res,lreq,lcloth,calc,coll]=await Promise.all([axios.get(`http://localhost:5000/api/users/userviewprofile/${id}`),
-        await axios.get(`http://localhost:5000/api/users/alatestrequest/${id}`),
-        await axios.get(`http://localhost:5000/api/users/alatestclothlisting/${id}`),
-      await axios.get(`http://localhost:5000/api/users/calculaterating/${id}`),
-     await axios.get(`http://localhost:5000/api/users/collection/${id}`)]);
+      const[res,lreq,lcloth,calc,coll]=await Promise.all([axios.get(`https://cloth-exchange-backend.onrender.com/api/users/userviewprofile/${id}`),
+        await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/alatestrequest/${id}`),
+        await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/alatestclothlisting/${id}`),
+      await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/calculaterating/${id}`),
+     await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/collection/${id}`)]);
       setProfile(res.data);
       setRating(calc.data);
       setCollection(coll.data);
@@ -40,14 +40,14 @@ const[request,setRequest]=useState([]);
       <section className="bg-white rounded-2xl overflow-hidden shadow mb-6 relative">
         <div className=" h-64">
           <img
-            src={`http://localhost:5000${profile.profileBanner}`}
+            src={`https://cloth-exchange-backend.onrender.com${profile.profileBanner}`}
             
             className="w-full h-full object-cover  "
           />
 
           <div className="absolute bottom-6 left-8 flex items-center gap-6">
             <img
-              src={`http://localhost:5000${profile.profilePicture}`}
+              src={`https://cloth-exchange-backend.onrender.com${profile.profilePicture}`}
               alt="profile"
               className="w-32 h-32 rounded-full border-4 border-white"
             />
@@ -109,7 +109,7 @@ const[request,setRequest]=useState([]);
                   className="border rounded-xl overflow-hidden"
                 >
                   <img
-              src={`http://localhost:5000${item.image}`}
+              src={`https://cloth-exchange-backend.onrender.com${item.image}`}
                     alt=""
                     className="w-full h-52 object-cover"
                   />

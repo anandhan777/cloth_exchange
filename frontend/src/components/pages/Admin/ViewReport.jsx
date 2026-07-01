@@ -61,8 +61,8 @@ export default function ViewReports() {
     useEffect(()=>{
         const fetchReports=async()=>{
             try {
-              const[res,rpc]=await Promise.all([axios.get(`http://localhost:5000/api/admin/viewreports`),
-                axios.get(`http://localhost:5000/api/admin/reportcollection`)]);
+              const[res,rpc]=await Promise.all([axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/viewreports`),
+                axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/reportcollection`)]);
               setReport(res.data);
               setReportCollection(rpc.data);
               console.log(rpc.data)
@@ -76,8 +76,8 @@ export default function ViewReports() {
     },[])
 const deleteListing=async(itemId,reportId)=>{
     try {
-        await axios.delete(`http://localhost:5000/api/admin/deleteitem/${itemId}`);
-        await axios.delete(`http://localhost:5000/api/admin/deletereport/${reportId}`)
+        await axios.delete(`https://cloth-exchange-backend.onrender.com/api/admin/deleteitem/${itemId}`);
+        await axios.delete(`https://cloth-exchange-backend.onrender.com/api/admin/deletereport/${reportId}`)
         alert("item deleted");
 
     } catch (error) {
@@ -88,7 +88,7 @@ const deleteListing=async(itemId,reportId)=>{
 }
 const deleteReport=async(reportId)=>{
     try{
-    await axios.put(`http://localhost:5000/api/admin/deletereport/${reportId}`,{status:"Resolved"});
+    await axios.put(`https://cloth-exchange-backend.onrender.com/api/admin/deletereport/${reportId}`,{status:"Resolved"});
     setReport(prev=>prev.filter(m=>m._id!==reportId));
     alert("report resolved")
     }catch(error){
@@ -97,7 +97,7 @@ const deleteReport=async(reportId)=>{
 
 }
 const sendWarning=async(id)=>{
-await axios.post(`http://localhost:5000/api/users/sendwarning/${id}`,{reason});
+await axios.post(`https://cloth-exchange-backend.onrender.com/api/users/sendwarning/${id}`,{reason});
     alert("send warning successfully");
     setShowbox(!showbox);
 }  
@@ -201,7 +201,7 @@ await axios.post(`http://localhost:5000/api/users/sendwarning/${id}`,{reason});
               {/* Image */}
 
               <img
-                src={`http://localhost:5000${r.itemId.image}`}
+                src={`https://cloth-exchange-backend.onrender.com${r.itemId.image}`}
                 className="h-36 w-36 object-cover rounded-xl"
                 alt=""
               />

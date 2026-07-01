@@ -61,7 +61,7 @@ function User_profilecreate() {
     formData.append("favoriteCategory",formdata.favoriteCategory);
     try{
         const token=localStorage.getItem("token");
-    const res=await axios.post("http://localhost:5000/api/users/profilecreate",formData,{headers:{"Content-Type":"multipart/form-data", "Authorization":`Bearer ${token}`}});
+    const res=await axios.post("https://cloth-exchange-backend.onrender.com/api/users/profilecreate",formData,{headers:{"Content-Type":"multipart/form-data", "Authorization":`Bearer ${token}`}});
     console.log(res.data);
     }catch(err){
         console.log(err);

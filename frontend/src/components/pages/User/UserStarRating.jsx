@@ -38,7 +38,7 @@ const UserStarRating = () => {
   }
 
   const sendFeedback=async()=>{
-    await axios.post(`http://localhost:5000/api/users/addstarrating`,{receiverId:currentuser.receiverId,senderId:currentuser.senderId,rating:rating,review:review,feedback:feedback});
+    await axios.post(`https://cloth-exchange-backend.onrender.com/api/users/addstarrating`,{receiverId:currentuser.receiverId,senderId:currentuser.senderId,rating:rating,review:review,feedback:feedback});
 
     alert("thank you for your response");
     navigate(-1);

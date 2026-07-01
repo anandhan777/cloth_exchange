@@ -21,7 +21,7 @@ const Sidebar = ({profile}) => {
   const menuItems = [
     {id:1,
       name: <h1>{profile.fullname}</h1>,
-      icon: <img src={`http://localhost:5000${profile.profilePicture}`} className="h-10 w-10 object-cover rounded-full"/>,
+      icon: <img src={`https://cloth-exchange-backend.onrender.com${profile.profilePicture}`} className="h-10 w-10 object-cover rounded-full"/>,
          path:"/user/profile",
     },
    

@@ -15,7 +15,7 @@ export default function UserTable() {
     useEffect(()=>{
         const fetchUsers=async()=>{
            try{
-            const res=await axios.get("http://localhost:5000/api/admin/viewusers");
+            const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/admin/viewusers");
             setUsers(res.data);
             console.log(res.data)
            }catch(error){
@@ -29,7 +29,7 @@ export default function UserTable() {
     }
 const searchUser=async()=>{
       if (search.trim() !== "") {       
-        const res=await axios.get(`http://localhost:5000/api/admin/searchuser?search=${search}`)
+        const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/searchuser?search=${search}`)
           .then((res) => setUsers(res.data))
           .catch((err) => console.error(err));  
       } else {
@@ -41,7 +41,7 @@ const searchUser=async()=>{
    
     const handleClick=async()=>{
       try {
-        const res=await axios.get(`http://localhost:5000/api/admin/searchtypes?typeuser=${typeuser}`);
+        const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/searchtypes?typeuser=${typeuser}`);
         setUsers(res.data);
         console.log(res.data);
       } catch(error) {
@@ -53,7 +53,7 @@ const searchUser=async()=>{
     try{
       console.log(id);
        alert("are you sure you want to suspend this user");
-      const res=await axios.put(`http://localhost:5000/api/admin/banuser/${id}`,{status:"suspended"});
+      const res=await axios.put(`https://cloth-exchange-backend.onrender.com/api/admin/banuser/${id}`,{status:"suspended"});
       const updateswap=res.data.data;
         setUsers((prev)=>prev.map((req)=>req.userId===id? {...req,status:updateswap.status}:req));    
     }catch(error) {
@@ -64,7 +64,7 @@ const searchUser=async()=>{
     try{
       console.log(id);
        alert("block released");
-      const res=await axios.put(`http://localhost:5000/api/admin/banuser/${id}`,{status:"active"});
+      const res=await axios.put(`https://cloth-exchange-backend.onrender.com/api/admin/banuser/${id}`,{status:"active"});
       const updateswap=res.data.data;
         setUsers((prev)=>prev.map((req)=>req.userId===id? {...req,status:updateswap.status}:req));
       
@@ -152,7 +152,7 @@ const searchUser=async()=>{
                 <td className="p-4">
                   <div className="flex items-center gap-3">
                     <img
-                      src={`http://localhost:5000${user.profilePicture}`}
+                      src={`https://cloth-exchange-backend.onrender.com${user.profilePicture}`}
                       alt=""
                       className="w-12 h-12 rounded-full object-cover"
                     />

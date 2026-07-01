@@ -15,7 +15,7 @@ router.get("/google/callback",passport.authenticate("google",{
 }),
 async(req,res)=>{
     const token=jwt.sign({id:req.user.id},process.env.JWT_SECRET,{expiresIn:"7d"});
-    res.redirect(`http://localhost:5173/google-success?token=${token}`)
+    res.redirect(`https://cloth-exchange-frontend.vercel.app/google-success?token=${token}`)
 });
 
 module.exports=router;

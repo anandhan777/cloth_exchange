@@ -18,9 +18,9 @@ const AdminDashboard = () => {
   useEffect(()=>{
     const fetchCollection=async()=>{
       try{
-      const [res,not,lat]=await Promise.all([ axios.get("http://localhost:5000/api/admin/totalcollections"),
-        axios.get("http://localhost:5000/api/admin/globalnotification"),
-         axios.get("http://localhost:5000/api/admin/latestlisting")
+      const [res,not,lat]=await Promise.all([ axios.get("https://cloth-exchange-backend.onrender.com/api/admin/totalcollections"),
+        axios.get("https://cloth-exchange-backend.onrender.com/api/admin/globalnotification"),
+         axios.get("https://cloth-exchange-backend.onrender.com/api/admin/latestlisting")
       ]);
       setCollection(res.data);
       setNotification(not.data);
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
     fetchCollection();
 },[])
 const deletemsg=async(id)=>{
-  await axios.delete(`http://localhost:5000/api/admin/deletemessage/${id}`);
+  await axios.delete(`https://cloth-exchange-backend.onrender.com/api/admin/deletemessage/${id}`);
   setNotification(pre=>pre.filter(m=>m._id!==id));
 }
   return (
@@ -193,7 +193,7 @@ const deletemsg=async(id)=>{
              {latest?.data?.map(item=>(
               <tbody>
                 <tr className="border-b">
-                  <td className="py-3"><img src={`http://localhost:5000${item.image}`} className="w-12 h-12 rounded"/></td>
+                  <td className="py-3"><img src={`https://cloth-exchange-backend.onrender.com${item.image}`} className="w-12 h-12 rounded"/></td>
                   <td>{item.category}</td>
                   <td>{item.userId.name}</td>
                 </tr>

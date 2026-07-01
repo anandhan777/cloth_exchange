@@ -14,7 +14,7 @@ export default function NotificationPage() {
     const user=JSON.parse(localStorage.getItem("user"));
     const fetchNotification=async()=>{
         try {
-            const res=await axios.get(`http://localhost:5000/api/users/usernotifications/${user._id}`);
+            const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/usernotifications/${user._id}`);
             console.log(res.data);  
             setGlobal(res.data.global);
             setWarnings(res.data.warning);
@@ -27,7 +27,7 @@ export default function NotificationPage() {
   },[])
   const deleteMsg=async(id)=>{
     try {
-      const data=await axios.delete(`http://localhost:5000/api/users/deletenotify/${id}`);
+      const data=await axios.delete(`https://cloth-exchange-backend.onrender.com/api/users/deletenotify/${id}`);
       setActiveTab(prev=>prev.filter(m=>m._id!==id));
     } catch (error) {
       console.log(error);

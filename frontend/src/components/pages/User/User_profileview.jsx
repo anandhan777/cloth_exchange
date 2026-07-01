@@ -16,11 +16,11 @@ const ProfilePage = () => {
   useEffect(()=>{
     const token=localStorage.getItem("token");
     const fetchProfile=async()=>{
-      const [res,lreq,lclo,rat,coll]=await Promise.all([axios.get("http://localhost:5000/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}}),
-         await axios.get("http://localhost:5000/api/users/latestrequest",{headers:{Authorization:`Bearer ${token}`}}),
-        await axios.get("http://localhost:5000/api/users/latestclothlisting",{headers:{Authorization:`Bearer ${token}`}}),
-      await axios.get(`http://localhost:5000/api/users/calculaterating/${user._id}`),
-      await axios.get(`http://localhost:5000/api/users/collection/${user._id}`)]);
+      const [res,lreq,lclo,rat,coll]=await Promise.all([axios.get("https://cloth-exchange-backend.onrender.com/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}}),
+         await axios.get("https://cloth-exchange-backend.onrender.com/api/users/latestrequest",{headers:{Authorization:`Bearer ${token}`}}),
+        await axios.get("https://cloth-exchange-backend.onrender.com/api/users/latestclothlisting",{headers:{Authorization:`Bearer ${token}`}}),
+      await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/calculaterating/${user._id}`),
+      await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/collection/${user._id}`)]);
       console.log(res.data);
       console.log(lreq.data);
       console.log(lclo.data);
@@ -43,14 +43,14 @@ const ProfilePage = () => {
       <section className="bg-white rounded-2xl overflow-hidden shadow mb-6">
         <div className="relative h-64">
           <img
-            src={`http://localhost:5000${profile.profileBanner}`}
+            src={`https://cloth-exchange-backend.onrender.com${profile.profileBanner}`}
             
             className="w-full h-full object-cover"
           />
           <div className="flex justify-between">
           <div className="absolute bottom-6 left-8 flex items-center gap-6">
             <img
-              src={`http://localhost:5000${profile.profilePicture}`}
+              src={`https://cloth-exchange-backend.onrender.com${profile.profilePicture}`}
               alt="profile"
               className="w-32 h-32 rounded-full border-4 object-cover border-white"
             />
@@ -116,7 +116,7 @@ const ProfilePage = () => {
                   className="border rounded-xl overflow-hidden"
                 >
                   <img
-                    src={`http://localhost:5000${item.image}`}
+                    src={`https://cloth-exchange-backend.onrender.com${item.image}`}
                     alt=""
                     className="w-full h-52 object-cover"
                   />

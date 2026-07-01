@@ -19,7 +19,7 @@ function Login() {
   const onSubmit=async(data)=>{
       console.log(data);
       try{
-      const res=await axios.post("http://localhost:5000/api/auth/login",data);
+      const res=await axios.post("https://cloth-exchange-backend.onrender.com/api/auth/login",data);
       console.log(res.data);
       localStorage.setItem("token",res.data.token);
       localStorage.setItem("user",JSON.stringify(res.data.user));   
@@ -64,7 +64,7 @@ function Login() {
         </form>
         <p className="text-[16px] text-gray-600 ml-1">if you don't have an account, <NavLink to="/register" className="text-blue-500 hover:underline">register here</NavLink></p>
         <p>or</p>
-        <button onClick={()=>{window.location.href="http://localhost:5000/api/auth/google"}}
+        <button onClick={()=>{window.location.href="https://cloth-exchange-backend.onrender.com/api/auth/google"}}
           className="bg-white flex items-center mt-4 border-2 border-green-900 text-green-900 w-[200px] py- px-1 rounded-3xl hover:bg-gray-200"><img src={google} className="w-10 h-10"/>login with google</button>
     </motion.div>
     </div>

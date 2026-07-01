@@ -23,7 +23,7 @@ function User_profileupdate() {
     const fetchProfile=async()=>{
       const token=localStorage.getItem("token");
     try{
-      const res=await axios.get("http://localhost:5000/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}});
+      const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}});
       setFormdata(res.data);
     }catch(error){
       console.log(error);
@@ -76,7 +76,7 @@ function User_profileupdate() {
     formData.append("favoriteCategory",formdata.favoriteCategory);
     try{
         const token=localStorage.getItem("token");
-    const res=await axios.put("http://localhost:5000/api/users/profileupdate",formData,{headers:{"Content-Type":"multipart/form-data", "Authorization":`Bearer ${token}`}});
+    const res=await axios.put("https://cloth-exchange-backend.onrender.com/api/users/profileupdate",formData,{headers:{"Content-Type":"multipart/form-data", "Authorization":`Bearer ${token}`}});
     console.log(res.data);
     }catch(err){
         console.log(err);

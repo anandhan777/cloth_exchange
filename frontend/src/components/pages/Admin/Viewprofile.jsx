@@ -10,7 +10,7 @@ const Viewprofile = () => {
   useEffect(()=>{
     const token=localStorage.getItem("token");
     const fetchProfile=async()=>{
-      const res=await axios.get(`http://localhost:5000/api/admin/viewprofile/${id}`);
+      const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/viewprofile/${id}`);
       console.log(res.data);
       console.log(res.data);
       setProfile(res.data);
@@ -26,14 +26,14 @@ const Viewprofile = () => {
       <section className="bg-white rounded-2xl overflow-hidden shadow mb-6 relative">
         <div className=" h-64">
           <img
-            src={`http://localhost:5000${profile.profileBanner}`}
+            src={`https://cloth-exchange-backend.onrender.com${profile.profileBanner}`}
             
             className="w-full h-full object-cover  "
           />
 
           <div className="absolute bottom-6 left-8 flex items-center gap-6">
             <img
-              src={`http://localhost:5000${profile.profilePicture}`}
+              src={`https://cloth-exchange-backend.onrender.com${profile.profilePicture}`}
               alt="profile"
               className="w-32 h-32 rounded-full border-4 border-white"
             />

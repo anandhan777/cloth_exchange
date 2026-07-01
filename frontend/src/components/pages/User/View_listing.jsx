@@ -20,7 +20,7 @@ const ListingCard = () => {
         const fetchListing=async()=>{
           const token=localStorage.getItem("token");
             try{
-                const res=await axios.get("http://localhost:5000/api/users/viewlisting",{headers:{Authorization:`Bearer ${token}`}});
+                const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/viewlisting",{headers:{Authorization:`Bearer ${token}`}});
                 setList(res.data);
             }catch(error){
                 console.log(error);
@@ -55,7 +55,7 @@ const ListingCard = () => {
     const wishlist=async(id)=>{
         const user=JSON.parse(localStorage.getItem("user"))
       try{
-        const data=axios.post(`http://localhost:5000/api/users/addtowishlist/${user._id}/${id}`);
+        const data=axios.post(`https://cloth-exchange-backend.onrender.com/api/users/addtowishlist/${user._id}/${id}`);
         console.log(data);
       }catch(error){
         console.log(error);
@@ -90,7 +90,7 @@ const ListingCard = () => {
 
     }
     const searchList=async()=>{
-      const res=await axios.get(`http://localhost:5000/api/users/search?search=${search}`);
+      const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/search?search=${search}`);
       setList(res.data);
     }
   return (
@@ -132,7 +132,7 @@ const ListingCard = () => {
       <div>
       {/* Image */}
       <img
-        src={`http://localhost:5000${item.image}`}
+        src={`https://cloth-exchange-backend.onrender.com${item.image}`}
         alt={item.title}
         className="w-full h-54 object-cover relative group-hover:scale-110 duration-700"
       /><FaHeart onClick={()=>{wishlist(item._id),alert("item added to wishlist")}} className="absolute -mt-50 ml-4 text-black h-5 w-5"/></div>

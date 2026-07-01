@@ -15,7 +15,7 @@ const Admin_viewFeedback = () => {
   useEffect(()=>{
     const fetchFeedback=async()=>{
         try{
-            const res=await axios.get("http://localhost:5000/api/admin/viewfeedback");
+            const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/admin/viewfeedback");
             setFeedbacks(res.data);
 
         }catch(error){
@@ -27,7 +27,7 @@ const Admin_viewFeedback = () => {
   const deleteFeedback=async(id)=>{
   
     try{
-        const res=await axios.delete(`http://localhost:5000/api/admin/deletefeedback/${id}`);
+        const res=await axios.delete(`https://cloth-exchange-backend.onrender.com/api/admin/deletefeedback/${id}`);
         setFeedbacks(pre=>pre.filter(m=>m._id!==id))
     }catch(error){
         console.log(error);
@@ -35,7 +35,7 @@ const Admin_viewFeedback = () => {
   }
 
   const isRead=async(id)=>{
-    await axios.put(`http://localhost:5000/api/admin/readfeedback/${id}`);
+    await axios.put(`https://cloth-exchange-backend.onrender.com/api/admin/readfeedback/${id}`);
      setFeedbacks(pre=>pre.map(m=>m._id!==id))
     console.log("msg readed");
     

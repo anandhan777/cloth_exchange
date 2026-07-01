@@ -18,7 +18,7 @@ export default function Review_itemreport() {
         // const user=JSON.parse(localStorage.getItem("user"));
         try{
            console.log(id.id);
-          const res=await axios.get(`http://localhost:5000/api/admin/reviewitem/${id.id}`);
+          const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/reviewitem/${id.id}`);
           setReviewitem(res.data)
           console.log(res.data)
           
@@ -42,7 +42,7 @@ export default function Review_itemreport() {
           <div>
 
             <img
-              src={`http://localhost:5000${reviewitem?.image}`}
+              src={`https://cloth-exchange-backend.onrender.com${reviewitem?.image}`}
               alt=""
               className="
                 w-full

@@ -11,7 +11,7 @@ const Wishlist = () => {
         const fetchWishlist=async()=>{
             const token=localStorage.getItem("token");
             try{
-                const res=await axios.get("http://localhost:5000/api/users/showwishlist",{headers:{Authorization:`Bearer ${token}`}});
+                const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/showwishlist",{headers:{Authorization:`Bearer ${token}`}});
                 console.log(res.data);
                 setList(res.data ||[]);
             }catch(error){
@@ -36,7 +36,7 @@ const Wishlist = () => {
     // const wishlist=async(id)=>{
     //     const user=JSON.parse(localStorage.getItem("user"))
     //   try{
-    //     const data=axios.post(`http://localhost:5000/api/users/addtowishlist/${user._id}/${id}`);
+    //     const data=axios.post(`https://cloth-exchange-backend.onrender.com/api/users/addtowishlist/${user._id}/${id}`);
     //     console.log(data);
     //   }catch(error){
     //     console.log(error);
@@ -95,7 +95,7 @@ const Wishlist = () => {
       <div>
       {/* Image */}
       <img
-        src={`http://localhost:5000${item.image}`}
+        src={`https://cloth-exchange-backend.onrender.com${item.image}`}
         alt={item.title}
         className="w-full h-54 object-cover relative"
       /></div>

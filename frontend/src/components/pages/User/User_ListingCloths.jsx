@@ -36,7 +36,7 @@ const CreateListing = () => {
     formdata.append("state",data.state);
     try{
        const token=localStorage.getItem("token");
-    const res=await axios.post("http://localhost:5000/api/users/addlisting",formdata,{headers:{"content-Type":"multipart/form-data","Authorization":`Bearer ${token}`}})
+    const res=await axios.post("https://cloth-exchange-backend.onrender.com/api/users/addlisting",formdata,{headers:{"content-Type":"multipart/form-data","Authorization":`Bearer ${token}`}})
     console.log(res.data);  
     }catch(error){
       console.log(error);

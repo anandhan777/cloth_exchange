@@ -28,7 +28,7 @@ const FeedbackReportForm = () => {
     const token=localStorage.getItem("token");
     e.preventDefault();
     try{
-    const res=await axios.post("http://localhost:5000/api/admin/addfeedback",formData,{headers:{Authorization:`Bearer ${token}`}});
+    const res=await axios.post("https://cloth-exchange-backend.onrender.com/api/admin/addfeedback",formData,{headers:{Authorization:`Bearer ${token}`}});
     console.log(res.data)
     alert("feedback send to admin");
     }catch(error){

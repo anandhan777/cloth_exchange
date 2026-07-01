@@ -22,7 +22,15 @@ const app=express();
 const server=http.createServer(app);
 app.use(express.json());
 app.use(passport.initialize());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://cloth-exchange-frontend.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use("/api/users",userRoutes);
 app.use("/api/auth",authRoutes);
 app.use("/api/admin",adminRoutes);

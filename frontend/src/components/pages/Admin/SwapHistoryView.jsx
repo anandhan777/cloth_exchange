@@ -52,7 +52,7 @@ export default function SwapHistoryView() {
         
         const fetchSwap=async()=>{
         try {
-           const res=await axios.get(`http://localhost:5000/api/admin/swaphistory`);
+           const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/swaphistory`);
            console.log(res.data)
             setSwaps(res.data);
         } catch (error) {
@@ -126,7 +126,7 @@ export default function SwapHistoryView() {
                 </p>
               <div className="flex gap-10">
                 <img
-                  src={`http://localhost:5000${swap.itemoffered?.image}`}
+                  src={`https://cloth-exchange-backend.onrender.com${swap.itemoffered?.image}`}
                   alt=""
                   className="w-20 h-20 object-cover rounded-xl"
                 />
@@ -165,7 +165,7 @@ export default function SwapHistoryView() {
                 </p>
                <div className="flex gap-10">
                 <img
-                  src={`http://localhost:5000${swap.itemreceived?.image}`}
+                  src={`https://cloth-exchange-backend.onrender.com${swap.itemreceived?.image}`}
                   alt=""
                   className="w-20 h-20 object-cover rounded-xl"
                 />

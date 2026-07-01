@@ -11,7 +11,7 @@ function UserLayout() {
     useEffect(()=>{
       const token=localStorage.getItem("token");
       const fetchProfile=async()=>{
-        const res=await axios.get("http://localhost:5000/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}});
+        const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/getprofile",{headers:{Authorization:`Bearer ${token}`}});
       
         setProfile(res.data);
   

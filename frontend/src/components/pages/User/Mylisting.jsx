@@ -13,7 +13,7 @@ function Mylisting() {
         const fetchCloths=async()=>{
             try{
             const token=localStorage.getItem('token');
-            const res=await axios.get("http://localhost:5000/api/users/mylisting",{headers:{Authorization:`Bearer ${token}`}});
+            const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/mylisting",{headers:{Authorization:`Bearer ${token}`}});
             setCloths(res.data);
             }catch(error){
                 console.log(error);
@@ -40,7 +40,7 @@ function Mylisting() {
 
   const itemdelete=async(id)=>{
     try{
-      const res=await axios.delete(`http://localhost:5000/api/users/deletemyitem/${id}`);
+      const res=await axios.delete(`https://cloth-exchange-backend.onrender.com/api/users/deletemyitem/${id}`);
       setCloths(pre=>pre.filter((m)=>m._id!==id));
     }catch(error){
       console.log(error);
@@ -58,7 +58,7 @@ function Mylisting() {
       {/* Image */}
       <div className="w-full md:w-48 h-48 flex-shrink-0">
         <img
-          src={`http://localhost:5000${cloth.image}`}
+          src={`https://cloth-exchange-backend.onrender.com${cloth.image}`}
           alt={cloth.title}
           className="w-full h-full object-cover rounded-lg"
         />

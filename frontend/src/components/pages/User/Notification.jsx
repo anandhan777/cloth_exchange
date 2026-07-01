@@ -18,7 +18,7 @@ export default function NotificationsPage() {
     const fetchincoming=async()=>{
         try{
             const token=localStorage.getItem("token");
-            const res=await axios.get("http://localhost:5000/api/users/incomingrequest",{headers:{Authorization:`Bearer ${token}`}});
+            const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/incomingrequest",{headers:{Authorization:`Bearer ${token}`}});
             setIncoming(res.data);
             console.log(res.data)
         }catch(error){
@@ -28,7 +28,7 @@ export default function NotificationsPage() {
     const fetchoutgoing=async()=>{
         try{
             const token=localStorage.getItem("token");
-            const res=await axios.get("http://localhost:5000/api/users/outgoingrequest",{headers:{Authorization:`Bearer ${token}`}});
+            const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/users/outgoingrequest",{headers:{Authorization:`Bearer ${token}`}});
             setOutgoing(res.data);
             console.log(res.data);
 
@@ -64,7 +64,7 @@ export default function NotificationsPage() {
   })
   
  const removeR=async(id)=>{
-    const res=await axios.delete(`http://localhost:5000/api/users/removerequest/${id}`);
+    const res=await axios.delete(`https://cloth-exchange-backend.onrender.com/api/users/removerequest/${id}`);
     // const updatedrequest=outgoing.filter((m,_)=>m._id!==id);
     setOutgoing(prev=>prev.filter(m=>m._id!==id
     ));
@@ -72,7 +72,7 @@ export default function NotificationsPage() {
   }
   const startChat=async(id)=>{
     try{
-      const data=await axios.put(`http://localhost:5000/api/swap/startchat/${id}`,{status:"chatting"});
+      const data=await axios.put(`https://cloth-exchange-backend.onrender.com/api/swap/startchat/${id}`,{status:"chatting"});
       console.log(data.data);
     }catch(error){
       console.log(error);
@@ -92,7 +92,7 @@ export default function NotificationsPage() {
 // }
   const acceptRequest=async(id,sid,rid)=>{
     try{
-    const res=await axios.put(`http://localhost:5000/api/swap/acceptrequest/${id}/${sid}/${rid}`,{status:"accepted",CStatus:"Reserved"});
+    const res=await axios.put(`https://cloth-exchange-backend.onrender.com/api/swap/acceptrequest/${id}/${sid}/${rid}`,{status:"accepted",CStatus:"Reserved"});
     const updateswap=res.data.data;
     console.log(res);
     setIncoming((prev)=>prev.map((req)=>req._id===id ? {...req,status:updateswap.status}:req));
@@ -104,7 +104,7 @@ export default function NotificationsPage() {
   }
   const Cancel=async(id)=>{
     try{
-    const res=await axios.put(`http://localhost:5000/api/swap/cancelrequest/${id}`);
+    const res=await axios.put(`https://cloth-exchange-backend.onrender.com/api/swap/cancelrequest/${id}`);
        const updateswap=res.data.data;
     console.log(res);
    setIncoming((prev)=>prev.map((req)=>req._id===id ? {...req,status:updateswap.status}:req));
@@ -117,7 +117,7 @@ export default function NotificationsPage() {
 
   const rejectRequest=async(id)=>{
     try{
-      const res=await axios.put(`http://localhost:5000/api/swap/rejectrequest/${id}`);
+      const res=await axios.put(`https://cloth-exchange-backend.onrender.com/api/swap/rejectrequest/${id}`);
       const updateswap=res.data.data;
       console.log(res);
       setIncoming((prev)=>prev.map((req)=>req._id===id ?{...req,status:updateswap?.status}:req));
@@ -202,7 +202,7 @@ export default function NotificationsPage() {
             <div className="flex gap-3">
 
               <img
-                src={`http://localhost:5000${inco.receiverListingId?.image}`}
+                src={`https://cloth-exchange-backend.onrender.com${inco.receiverListingId?.image}`}
                 alt=""
                 className="w-20 h-20 rounded-xl object-cover"
               />
@@ -228,7 +228,7 @@ export default function NotificationsPage() {
             <div className="flex gap-3">
 
               <img
-                 src={`http://localhost:5000${inco.senderListingId?.image}`}
+                 src={`https://cloth-exchange-backend.onrender.com${inco.senderListingId?.image}`}
                 alt=""
                 className="w-20 h-20 rounded-xl object-cover"
               />
@@ -329,7 +329,7 @@ export default function NotificationsPage() {
             <div className="flex gap-3">
 
               <img
-                src={`http://localhost:5000${out.receiverListingId?.image}`}
+                src={`https://cloth-exchange-backend.onrender.com${out.receiverListingId?.image}`}
                 alt=""
                 className="w-20 h-20 rounded-xl object-cover"
               />
@@ -355,7 +355,7 @@ export default function NotificationsPage() {
             <div className="flex gap-3">
 
               <img
-                 src={`http://localhost:5000${out.senderListingId?.image}`}
+                 src={`https://cloth-exchange-backend.onrender.com${out.senderListingId?.image}`}
                 alt=""
                 className="w-20 h-20 rounded-xl object-cover"
               />

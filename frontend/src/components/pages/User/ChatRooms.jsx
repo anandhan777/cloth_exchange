@@ -15,7 +15,7 @@ export default function ChatSection() {
     const fetchroom = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/swap/chatrooms/${user._id}`
+          `https://cloth-exchange-backend.onrender.com/api/swap/chatrooms/${user._id}`
         );
         setRooms(res.data);
       } catch (error) {

@@ -26,7 +26,7 @@ export default function Aview_clothdetails() {
       const fetchtrack=async()=>{
         const user=JSON.parse(localStorage.getItem("user"));
         try{
-          const res=await axios.get(`http://localhost:5000/api/swap/swaptracking/${user._id}/${clothdata.id}`);
+          const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/swap/swaptracking/${user._id}/${clothdata.id}`);
           setTrack(res.data[0].status);
           console.log(res.data[0].status);
         }catch(error){
@@ -48,7 +48,7 @@ export default function Aview_clothdetails() {
           <div>
 
             <img
-              src={`http://localhost:5000${clothdata.image}`}
+              src={`https://cloth-exchange-backend.onrender.com${clothdata.image}`}
               alt=""
               className="
                 w-full

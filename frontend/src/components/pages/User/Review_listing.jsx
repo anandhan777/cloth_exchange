@@ -24,8 +24,8 @@ function Review_listing() {
 useEffect(()=>{
     const fetchReviews=async()=>{
         try{
-        const [res,cal]=await Promise.all([axios.get(`http://localhost:5000/api/users/listuserreviews/${user._id}`),
-          axios.get(`http://localhost:5000/api/users/calculaterating/${user._id}`)
+        const [res,cal]=await Promise.all([axios.get(`https://cloth-exchange-backend.onrender.com/api/users/listuserreviews/${user._id}`),
+          axios.get(`https://cloth-exchange-backend.onrender.com/api/users/calculaterating/${user._id}`)
         ]);
         setReviews(res.data);
         setCalculate(cal.data);

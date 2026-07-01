@@ -11,7 +11,7 @@ function Admin_viewListing() {
     useEffect(()=>{
         const fetchListing=async()=>{
             try{
-                const res=await axios.get("http://localhost:5000/api/admin/viewlisting");
+                const res=await axios.get("https://cloth-exchange-backend.onrender.com/api/admin/viewlisting");
                 setList(res.data);
             }catch(error){
                 console.log(error);
@@ -48,7 +48,7 @@ function Admin_viewListing() {
 
     }
      const searchList=async()=>{
-      const res=await axios.get(`http://localhost:5000/api/users/search?search=${search}`);
+      const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/users/search?search=${search}`);
       setList(res.data);
     }
   return (
@@ -92,7 +92,7 @@ function Admin_viewListing() {
           <div>
           {/* Image */}
           <img
-            src={`http://localhost:5000${item.image}`}
+            src={`https://cloth-exchange-backend.onrender.com${item.image}`}
             alt={item.title}
             className="w-full h-54 object-cover relative"
           /></div>

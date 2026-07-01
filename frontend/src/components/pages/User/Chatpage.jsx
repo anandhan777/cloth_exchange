@@ -22,7 +22,7 @@ export default function ChatPage() {
 const user=JSON.parse(localStorage.getItem("user"));
 const swapComplete=async(senderId,receiverId)=>{
   try{
-  await axios.put(`http://localhost:5000/api/swap/swapcompleted/${USER._id}`,{sender:senderId,receiver:receiverId,status:"completed",CStatus:"Swapped"});
+  await axios.put(`https://cloth-exchange-backend.onrender.com/api/swap/swapcompleted/${USER._id}`,{sender:senderId,receiver:receiverId,status:"completed",CStatus:"Swapped"});
   console.log("swap completed")
   }catch(error){
     console.log(error);
@@ -35,11 +35,11 @@ const swapComplete=async(senderId,receiverId)=>{
     socket.emit("setup",user._id);
     socket.emit("join_swap",swapId);
 
-    // axios.get(`http://localhost:5000/api/getmessage/${swapId}`)
+    // axios.get(`https://cloth-exchange-backend.onrender.com/api/getmessage/${swapId}`)
     // .then(res=>setMessage(res.data))
    
   const fetchChat=async()=>{
-    const res=await axios.get(`http://localhost:5000/api/swap/getmessage/${swapId}`);
+    const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/swap/getmessage/${swapId}`);
     console.log(res.data);
     setMessage(res.data); 
   }
@@ -79,7 +79,7 @@ const swapComplete=async(senderId,receiverId)=>{
     
     const fetchProfile=async()=>{
        try{
-         const data=await axios.get(`http://localhost:5000/api/swap/getreceiverprofile/${receiver}`);
+         const data=await axios.get(`https://cloth-exchange-backend.onrender.com/api/swap/getreceiverprofile/${receiver}`);
     
          setProfile(data.data);
        }catch(error){
@@ -89,7 +89,7 @@ const swapComplete=async(senderId,receiverId)=>{
      fetchProfile();  
     const fetchStatus=async()=>{
        try{
-         const stat=await axios.get(`http://localhost:5000/api/swap/getstatus/${swapId}/${USER._id}/${receiver}`);
+         const stat=await axios.get(`https://cloth-exchange-backend.onrender.com/api/swap/getstatus/${swapId}/${USER._id}/${receiver}`);
          setStatus(stat.data);
          console.log(stat.data)
          
@@ -125,7 +125,7 @@ const swapComplete=async(senderId,receiverId)=>{
             <div className="flex items-center gap-3">
 
               <img
-                src={`http://localhost:5000${profile?.profilePicture}`}
+                src={`https://cloth-exchange-backend.onrender.com${profile?.profilePicture}`}
                 alt=""
                 className="w-12 h-12 rounded-full"
               />
@@ -165,7 +165,7 @@ const swapComplete=async(senderId,receiverId)=>{
           <div className="flex items-center gap-3">
            
             <img
-               src={`http://localhost:5000${profile?.profilePicture}`}
+               src={`https://cloth-exchange-backend.onrender.com${profile?.profilePicture}`}
               alt=""
               className="w-12 h-12 rounded-full object-cover"
             />

@@ -18,7 +18,7 @@ function SuccessfulSwapChart() {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/swap/swap-stats") // backend route
+    axios.get("https://cloth-exchange-backend.onrender.com/api/swap/swap-stats") // backend route
       .then(res => {
         const data = res.data;
         setChartData({

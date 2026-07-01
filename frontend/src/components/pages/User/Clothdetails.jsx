@@ -30,7 +30,7 @@ export default function ClothDetails() {
       const fetchtrack=async()=>{
         const user=JSON.parse(localStorage.getItem("user"));
         try{
-          const res=await axios.get(`http://localhost:5000/api/swap/swaptracking/${user._id}/${clothdata.id}`);
+          const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/swap/swaptracking/${user._id}/${clothdata.id}`);
           setTrack(res.data[0].status);
           console.log(res.data[0].status);
         }catch(error){
@@ -43,7 +43,7 @@ export default function ClothDetails() {
     const sendReport=async(id)=>{
       const user=JSON.parse(localStorage.getItem("user"));
       try{
-        const data=await axios.post(`http://localhost:5000/api/users/sendreport/${id}/${user._id}`,{reason});
+        const data=await axios.post(`https://cloth-exchange-backend.onrender.com/api/users/sendreport/${id}/${user._id}`,{reason});
         setShowbox(!showbox);
         alert("report has been send to admin,wait for the response");
       
@@ -60,7 +60,7 @@ export default function ClothDetails() {
           <div>
 
             <img
-              src={`http://localhost:5000${clothdata.image}`}
+              src={`https://cloth-exchange-backend.onrender.com${clothdata.image}`}
               alt=""
               className="
                 w-full

@@ -13,7 +13,7 @@ export default function Admin_NotificationPage() {
     
     const fetchNotification=async()=>{
         try {
-            const res=await axios.get(`http://localhost:5000/api/admin/adminnotifications`);
+            const res=await axios.get(`https://cloth-exchange-backend.onrender.com/api/admin/adminnotifications`);
             console.log(res.data);  
             setGlobal(res.data.global);
             setSwaps(res.data.swap);     

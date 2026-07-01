@@ -11,7 +11,7 @@ function Register() {
     const onSubmit=async(data)=>{
         try{
             console.log(data);
-            const res=await axios.post("http://localhost:5000/api/users/register",data);
+            const res=await axios.post("https://cloth-exchange-backend.onrender.com/api/users/register",data);
             console.log("login successfull");
         }catch(error){
             console.log(error);
@@ -49,7 +49,7 @@ function Register() {
         </NavLink>
         <button onClick={()=>navigate("/login")} className="bg-gradient-to-r from-green-900 to-green-700 mt-4 text-white w-[200px] py-2 px-4 rounded-3xl hover:bg-green-700">Register</button>
         <p className="text-[16px] text-gray-600 ml-1">if you already have an account, <NavLink to="/login" className="text-blue-500 hover:underline">login here</NavLink></p>
-         <button onClick={()=>{window.location.href="http://localhost:5000/api/auth/google"}}
+         <button onClick={()=>{window.location.href="https://cloth-exchange-backend.onrender.com/api/auth/google"}}
                   className="bg-white flex items-center mt-4  border-2 border-green-900 text-green-900 w-[200px] py- px-1 rounded-3xl hover:bg-gray-200"><img src={google} className="w-10 h-10"/>login with google</button>
         </form>
     </motion.div>
